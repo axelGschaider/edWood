@@ -1,5 +1,5 @@
 
-package evaluationTool.messageHooks;
+package edWood.messageHooks;
 
 public interface MessageHook {
   

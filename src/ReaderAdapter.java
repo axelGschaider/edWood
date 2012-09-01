@@ -1,6 +1,6 @@
-package evaluationTool.reader;
+package edWood.reader;
 
-import evaluationTool.data.*;
+import edWood.data.*;
 
 import java.io.IOException;
 

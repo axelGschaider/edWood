@@ -1,4 +1,4 @@
-package evaluationTool.data;
+package edWood.data;
 
 public interface LifeInput {
 

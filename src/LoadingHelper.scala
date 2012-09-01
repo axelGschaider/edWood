@@ -1,10 +1,10 @@
 
-package evaluationTool.loadingHelpers
+package edWood.loadingHelpers
 
 import java.lang.{ClassLoader, Class}
 
-import evaluationTool.reader.ReaderAdapter
-import evaluationTool.writer.WriterAdapter
+import edWood.reader.ReaderAdapter
+import edWood.writer.WriterAdapter
 
 import at.axelGschaider.loggsNProperties.Logs
 

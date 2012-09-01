@@ -1,4 +1,4 @@
-package evaluationTool.exceptions;
+package edWood.exceptions;
 
 /**
  * Created by IntelliJ IDEA.

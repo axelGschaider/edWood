@@ -1,9 +1,9 @@
 
-package evaluationTool.run
+package edWood.run
 
-import evaluationTool.actors.MainActor
-import evaluationTool.actors.messages.{InitAndStart, StopAll}
-import evaluationTool.config._
+import edWood.actors.MainActor
+import edWood.actors.messages.{InitAndStart, StopAll}
+import edWood.config._
 
 import at.axelGschaider.loggsNProperties.Logs
 

@@ -1,7 +1,7 @@
-<evaluationTool>
+<edWood>
   <!-- this is used and needed for the actor system. 
        Must be unique on every computer. -->
-  <instanceId>evaluationTool</instanceId>  
+  <instanceId>edWood</instanceId>  
   <!-- Defines how many jobs can be run in parallel. Change to '1' to
        run all jobs in sequence or to '6' to run them all in 
        parallel. Or anything in between . . . -->
@@ -22,9 +22,9 @@
            phase. Try changing it to DummyReader1. The class will be
            loaded but the interchanged data objects will not fit.
            Hence an exception will be thrown. -->
-      <classPath>evaluationTool.dummy.DummyReader2</classPath>
+      <classPath>edWood.dummy.DummyReader2</classPath>
     </reader>
-    <writer><classPath>evaluationTool.dummy.DummyWriter2</classPath></writer>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
   </job>
   <job>
     <id>1</id>
@@ -32,14 +32,14 @@
     <command>find</command>
     <!-- prints the contents of the 'find' command to a file -->
     <reader>
-      <classPath>evaluationTool.dummy.DummyReader1</classPath>
+      <classPath>edWood.dummy.DummyReader1</classPath>
     </reader>
     <writer>
       <!-- writers (and readers) can be configured at runtime by 
            passing some string arguments to it during startup phase.
            DummyWriter1 expects one string arg with the name of the
            file to write to . . . -->
-      <classPath>evaluationTool.dummy.DummyWriter1</classPath>
+      <classPath>edWood.dummy.DummyWriter1</classPath>
       <!-- . . . and this is how it is specified -->
       <arg>output.txt</arg>
     </writer>
@@ -49,8 +49,8 @@
     <!-- nothing special to explain in this job. just printing the
          date. -->
     <command>date</command>
-    <reader><classPath>evaluationTool.dummy.DummyReader2</classPath></reader>
-    <writer><classPath>evaluationTool.dummy.DummyWriter2</classPath></writer>
+    <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
   </job>
   <job>
     <id>3</id>
@@ -63,14 +63,14 @@
     <!-- here we also test pipes -->
     <command>ls | grep eval</command>
     <workDirectory>~/github/edWood</workDirectory>
-    <reader><classPath>evaluationTool.dummy.DummyReader2</classPath></reader>
-    <writer><classPath>evaluationTool.dummy.DummyWriter2</classPath></writer>
+    <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
   </job>
   <job>
     <id>4</id>
     <!-- Two interesting things in this job.
          A) we use readers and writers from the custom folder. These
-            classes are compiled appart from the main EvaluationTool.
+            classes are compiled appart from the main edWood.
             So this is used to demonstrate that adapters can be 
             developed without touching the main tool.
          B) This job fail! Somebody put division by zero in there.
@@ -93,7 +93,7 @@
     <command>cp config.xml tmp.txt</command>
     <file>tmp.txt</file>
     <post>rm tmp.txt</post>
-    <reader><classPath>evaluationTool.dummy.DummyReader3</classPath></reader>
-    <writer><classPath>evaluationTool.dummy.DummyWriter3</classPath></writer>
+    <reader><classPath>edWood.dummy.DummyReader3</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter3</classPath></writer>
   </job>
-</evaluationTool>
+</edWood>

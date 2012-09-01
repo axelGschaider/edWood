@@ -1,14 +1,14 @@
-package evaluationTool.config
+package edWood.config
 
 import java.io.File
 
-import evaluationTool.exceptions.{InitException, ReadXmlException}
-import evaluationTool.xmlHelpers._
-import evaluationTool.xmlHelpers.Implicits._
-import evaluationTool.reader.ReaderAdapter
-import evaluationTool.writer.WriterAdapter
-import evaluationTool.loadingHelpers.AdapterLoader._
-import evaluationTool.constants._
+import edWood.exceptions.{InitException, ReadXmlException}
+import edWood.xmlHelpers._
+import edWood.xmlHelpers.Implicits._
+import edWood.reader.ReaderAdapter
+import edWood.writer.WriterAdapter
+import edWood.loadingHelpers.AdapterLoader._
+import edWood.constants._
 
 import scala.xml._
 

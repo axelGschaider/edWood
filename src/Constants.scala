@@ -1,4 +1,4 @@
-package evaluationTool.constants
+package edWood.constants
 
 trait ConfigConstants {
   val DEFAULT_INTERPRETER = List("/bin/sh", "-c")

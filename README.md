@@ -6,8 +6,8 @@ frequent change.
 
     bin/        holds the compiled java class files
 
-    config.xml  a config file for the Evaluation Tool. Usually filled
-                with debugging and demonstration purposes in mind.
+    config.xml  a config file for edWood. Usually filled with debugging
+                and demonstration purposes in mind.
 
     custom/     holds the sources and compiled class files of custom
                 Reader- and WriterAdapters. This folders holds a src/
@@ -17,7 +17,7 @@ frequent change.
     doc/        Currently not in use but will hold javadocs and
                 scaladocs.
 
-    evaluationTool.properties
+    edWood.properties
                 the config file for log4j
 
     lib/        holds all needed libraries
@@ -39,25 +39,25 @@ not been tested.
 
 3) INSTALLATION AND RUNNING
 
-Large parts of the EvaluationTool are written in Scala. Nontheless the
-scala library is provided in the lib/ and all that is needed to run
-the EvaluationTool is Java 1.6 (or higher) and make.
-EvaluationTool can be run with the following command:
+Large parts of edWood are written in Scala. Nontheless the scala library 
+is provided in the lib/ and all that is needed to run the edWood is 
+Java 1.6 (or higher) and make.
+edWood can be run with the following command:
     
-    make et
+    make ed
 
-This will run EvaluationTool with the provided config.xml. You can 
-change this file or run EvaluationTool with your own file:
+This will run edWood with the provided config.xml. You can change this 
+file or run edWood with your own file:
 
-    java -cp ./bin/:./lib/commons-exec-1.1.jar:./lib/scala-library.jar:./lib/akka-actor-2.0.1.jar evaluationTool.EvaluationTool °yourOwnConfig.xml°
+    java -cp ./bin/:./lib/commons-exec-1.1.jar:./lib/scala-library.jar:./lib/akka-actor-2.0.1.jar edWood.edWood °yourOwnConfig.xml°
 
 Note that the provided config.xml relies on several standard unix
 tools like date, ls and find.
 
 
-4) COMPILING EVALUATIONTOOL
+4) COMPILING EDWOOD
 
-In order to compile the EvaluationTool will need to have scala 2.9.*
+In order to compile the edWood will need to have scala 2.9.*
 installed. Go to www.scala-lang.org/downloads an follow the
 instructions. Alternatively you can check the repositories of your
 Linux distribution. Note that the scala version in these repositories
@@ -86,16 +86,16 @@ want to create scala adapters you can run
 
 ReaderAdapters have to implement the following interface 
     
-    evaluationTool.reader.ReaderAdapter
+    edWood.reader.ReaderAdapter
 
 WriterAdapters have to implement the following interface
 
-    evaluationTool.writer.WriterAdapter
+    edWood.writer.WriterAdapter
 
 
 6) MAKE COMMANDS
 
-    et              runnes EvaluationTool with config.xml
+    ed              runs edWood with config.xml
 
     all             compiles all java and scala source in src/
 

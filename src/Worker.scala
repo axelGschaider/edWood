@@ -1,10 +1,10 @@
 
-package evaluationTool.actors
+package edWood.actors
 
-import evaluationTool.actors.messages._
-import evaluationTool.config._
-import evaluationTool.run._
-import evaluationTool.data.{FileInputImpl, Input}
+import edWood.actors.messages._
+import edWood.config._
+import edWood.run._
+import edWood.data.{FileInputImpl, Input}
 
 import java.io.File
 

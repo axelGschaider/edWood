@@ -1,8 +1,8 @@
 
 package myCustom;
 
-import evaluationTool.writer.WriterAdapter;
-import evaluationTool.exceptions.InitException;
+import edWood.writer.WriterAdapter;
+import edWood.exceptions.InitException;
 
 import org.apache.log4j.Logger;
 import java.io.IOException;

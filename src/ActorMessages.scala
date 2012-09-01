@@ -1,8 +1,8 @@
 
-package evaluationTool.actors.messages
+package edWood.actors.messages
 
-import evaluationTool.config._
-import evaluationTool.run.Stopable
+import edWood.config._
+import edWood.run.Stopable
 
 import akka.actor.ActorRef
 

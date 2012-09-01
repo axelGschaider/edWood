@@ -1,8 +1,8 @@
-package evaluationTool.run
+package edWood.run
 
 import java.io._
 import java.util.Iterator
-import evaluationTool.data._
+import edWood.data._
 
 
 trait ProcessInput extends LifeInput {
@@ -12,7 +12,7 @@ trait ProcessInput extends LifeInput {
   def getStdInput() = StdStreamInput( getProcess )
   def getErrInput() = ErrStreamInput( getProcess )
 
-  def getCombinedInput() = StdStreamInput(getProcess) //TODO
+  def getCombinedInput() = StdStreamInput(getProcess) //TODO implement
 
 
 }

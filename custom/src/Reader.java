@@ -1,8 +1,8 @@
 package myCustom;
 
-import evaluationTool.reader.ReaderAdapter;
-import evaluationTool.data.Input;
-import evaluationTool.data.LifeInput;
+import edWood.reader.ReaderAdapter;
+import edWood.data.Input;
+import edWood.data.LifeInput;
 
 import org.apache.log4j.Logger;
 

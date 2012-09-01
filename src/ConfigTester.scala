@@ -1,4 +1,4 @@
-package evaluationTool.config
+package edWood.config
 
 object ConfigTester {
 

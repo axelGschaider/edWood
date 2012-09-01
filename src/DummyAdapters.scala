@@ -1,10 +1,10 @@
-package evaluationTool.dummy
+package edWood.dummy
 
 import java.io.{File, FileWriter}
 
-import evaluationTool.reader.ReaderAdapter
-import evaluationTool.writer.WriterAdapter
-import evaluationTool.data._
+import edWood.reader.ReaderAdapter
+import edWood.writer.WriterAdapter
+import edWood.data._
 
 import at.axelGschaider.loggsNProperties.Logs
 

@@ -146,13 +146,13 @@ package at.axelGschaider.loggsNProperties {
 }
 
 
-package evaluationTool.properties {
+package edWood.properties {
 
   import at.axelGschaider.loggsNProperties.PropertyManager
 
 
   object PropertyManager extends PropertyManager {
-    lazy val defaultPropertiesFile: String =  "evaluationTool.properties"
+    lazy val defaultPropertiesFile: String =  "edWood.properties"
 
 
     override def internalInit():Unit = {}

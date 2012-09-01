@@ -1,12 +1,12 @@
 
-package evaluationTool.run
+package edWood.run
 
 import java.io._
 import java.util.Iterator;
 
-import evaluationTool.data._
+import edWood.data._
 import at.axelGschaider.loggsNProperties.Logs
-import evaluationTool.config.GeneralConfig
+import edWood.config.GeneralConfig
 
 
 object ExecutorFactory extends Logs {

@@ -1,13 +1,13 @@
-package evaluationTool
+package edWood
 
-import evaluationTool.data._
-import evaluationTool.writer._
-import evaluationTool.config._
-import evaluationTool.exceptions._
-import evaluationTool.reader._
-//import evaluationTool.structures._
-import evaluationTool.run.KickOff
-import evaluationTool.properties.PropertyManager
+import edWood.data._
+import edWood.writer._
+import edWood.config._
+import edWood.exceptions._
+import edWood.reader._
+//import edWood.structures._
+import edWood.run.KickOff
+import edWood.properties.PropertyManager
 
 import at.axelGschaider.loggsNProperties.Logs
 
@@ -21,12 +21,12 @@ import java.io.File
  * To change this template use File | Settings | File Templates.
  */
 
-object EvaluationTool extends Logs {
+object EdWood extends Logs {
 
   def main(args:Array[String]) {
     
     if(args.length != 1) {
-      println("usage: EvaluationTool config.xml")
+      println("usage: EdWood config.xml")
       System.exit(1)
     }
 

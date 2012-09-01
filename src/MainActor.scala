@@ -1,9 +1,9 @@
 
-package evaluationTool.actors
+package edWood.actors
 
-import evaluationTool.actors.messages._
-import evaluationTool.config._
-import evaluationTool.run.{Stopable, ExecutorFactory}
+import edWood.actors.messages._
+import edWood.config._
+import edWood.run.{Stopable, ExecutorFactory}
 
 import akka.actor.{Actor, ActorRef, Props}
 import at.axelGschaider.loggsNProperties.Logs

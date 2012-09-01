@@ -1,6 +1,6 @@
-package evaluationTool.writer;
+package edWood.writer;
 
-import evaluationTool.exceptions.InitException;
+import edWood.exceptions.InitException;
 
 import java.io.IOException;
 

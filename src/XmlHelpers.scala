@@ -1,8 +1,8 @@
 
-package evaluationTool.xmlHelpers
+package edWood.xmlHelpers
 
 import scala.xml._
-import evaluationTool.exceptions.ReadXmlException
+import edWood.exceptions.ReadXmlException
 
 trait PropertyReader {
   

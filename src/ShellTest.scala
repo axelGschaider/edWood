@@ -1,4 +1,4 @@
-package evalutaionTool.tests
+package edWood.tests
 
 object ShellTester {
 
