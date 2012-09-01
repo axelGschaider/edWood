@@ -1,0 +1,66 @@
+
+package evaluationTool.actors
+
+import evaluationTool.actors.messages._
+import evaluationTool.config._
+import evaluationTool.run._
+import evaluationTool.data.{FileInputImpl, Input}
+
+import java.io.File
+
+import akka.actor.{Actor, ActorRef, Props}
+import at.axelGschaider.loggsNProperties.Logs
+
+class Worker extends Actor with Logs {
+  
+  def receive = {
+    case Start(config) => {
+
+      info("Worker: starting")
+
+      val executor = ExecutorFactory.getExecutor(config.command.main)
+      val preJobs = config.command.pre.map( ExecutorFactory.getExecutor(_) )
+      val postJobs = config.command.post.map( ExecutorFactory.getExecutor(_) )
+
+      val stopableHub = StopableHub( preJobs ++ (executor :: postJobs ) )
+
+      sender ! MyHandle(stopableHub)
+
+      try {
+        
+        preJobs.foreach( _ exec true )
+
+        executor.run
+        debug("config: " + config.id)
+        config.reader readLife executor
+        val fileInputs:List[Input] = config.files.map( f => FileInputImpl(f, new File(f)) )
+        config.reader readPostRunSources fileInputs.toArray
+        val data = config.reader.getData
+        config.writers foreach (_ write data)
+
+        val message = executor.execCode match {
+          case 0    =>  Success
+          case 666  =>  Failed("internal error: the job has not been run yet")
+          case _    =>  Failed("external command failed for unknown reason")
+        }
+        
+        postJobs.foreach( _ exec true )
+  
+        //executor.error().map(Failed(_)).getOrElse(Success)
+        
+        info( "id " + config.id + ": sending " + message)
+        sender ! message
+      } catch {
+        case e:Exception => { stopableHub.stop
+                              sender ! Failed(config.id + ": job died with error '" + e.getMessage + "'") }
+      }
+
+
+    }
+  }
+
+
+}
+
+
+

@@ -1,0 +1,8 @@
+bin/
+evaluationTool.log
+output.txt
+.*.swp
+specialCharTest.txt
+custom/bin/
+custom/bin/myCustom/
+*.class
