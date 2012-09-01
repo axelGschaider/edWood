@@ -57,8 +57,8 @@ tools like date, ls and find.
 
 4) COMPILING EDWOOD
 
-In order to compile the edWood will need to have scala 2.9.*
-installed. Go to www.scala-lang.org/downloads an follow the
+In order to compile the edWood will need to have scala 2.9.\*
+installed. Go to www.scala-lang.org/downloads and follow the
 instructions. Alternatively you can check the repositories of your
 Linux distribution. Note that the scala version in these repositories
 are usually a little out of date and the version 2.8 (or lower) will
