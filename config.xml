@@ -28,7 +28,7 @@
   </job>
   <job>
     <id>1</id>
-    <workDirectory>..</workDirectoy>
+    <workDirectory>..</workDirectory>
     <command>find</command>
     <!-- prints the contents of the 'find' command to a file -->
     <reader>
