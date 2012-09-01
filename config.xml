@@ -28,6 +28,7 @@
   </job>
   <job>
     <id>1</id>
+    <workDirectory>..</workDirectoy>
     <command>find</command>
     <!-- prints the contents of the 'find' command to a file -->
     <reader>
@@ -61,6 +62,7 @@
     <pre>sleep 5</pre>
     <!-- here we also test pipes -->
     <command>ls | grep eval</command>
+    <workDirectory>~/github/edWood</workDirectory>
     <reader><classPath>evaluationTool.dummy.DummyReader2</classPath></reader>
     <writer><classPath>evaluationTool.dummy.DummyWriter2</classPath></writer>
   </job>
