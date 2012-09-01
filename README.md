@@ -68,6 +68,7 @@ Once scala is installed you can compile the full project by running
     make
 
 or
+
     make all
 
 
@@ -111,6 +112,6 @@ WriterAdapters have to implement the following interface
 
     java            compiles all java sources in the /src
 
-    customAdapters  compiles all custom java dapter
+    customAdapters  compiles all custom java dapters
 
 
