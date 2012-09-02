@@ -9,7 +9,7 @@
   <interpreter>
     <part>/bin/sh</part>
     <part>-c</part>
-    <workDirectory>runDirectory</workDirectory>
+    <workingDirectory>runDirectory</workingDirectory>
   </interpreter>
   <job>
     <id>0</id>
@@ -28,7 +28,7 @@
   </job>
   <job>
     <id>1</id>
-    <workDirectory>..</workDirectory>
+    <workingDirectory>..</workingDirectory>
     <command>find</command>
     <!-- prints the contents of the 'find' command to a file -->
     <reader>
@@ -62,7 +62,6 @@
     <pre>sleep 5</pre>
     <!-- here we also test pipes -->
     <command>ls | grep eval</command>
-    <workDirectory>~/github/edWood</workDirectory>
     <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
     <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
   </job>
@@ -91,6 +90,7 @@
          Later we will use a post command to remove the file. So you
          will not find it after the run. -->
     <command>cp config.xml tmp.txt</command>
+    <workingDirectory>~/github/edWood</workingDirectory>
     <file>tmp.txt</file>
     <post>rm tmp.txt</post>
     <reader><classPath>edWood.dummy.DummyReader3</classPath></reader>

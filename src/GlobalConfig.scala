@@ -24,9 +24,9 @@ import at.axelGschaider.loggsNProperties.Logs
  * To change this template use File | Settings | File Templates.
  */
 
-case class Command(main:String, pre:List[String], post:List[String])
+case class Command(main:String, pre:List[String], post:List[String], workingDirectory:Option[String])
 case class JobConfig(id:String, command:Command, reader:ReaderAdapter, files:List[String],  writers:List[WriterAdapter])
-case class GeneralConfig(actorSystem:String, maxJobs:Int, interpreter:List[String]) extends Logs {
+case class GeneralConfig(actorSystem:String, maxJobs:Int, interpreter:List[String], workingDirectory:Option[String]) extends Logs {
   debug("actorSystem: " + actorSystem)
   debug("maxJobs: " + maxJobs)
   debug("interpreter: " + interpreter)
@@ -56,9 +56,10 @@ object ConfigReader extends Logs with ConfigConstants {
   
   private def getGeneralConfig(xml:Elem):GeneralConfig = {
     GeneralConfig( 
-      xml ?! "instanceId"
-     ,(xml ? "maxJobs").map(_.toInt).getOrElse( DEFAULT_MAX_JOBS  )
+       xml ?! "instanceId"
+     , (xml ? "maxJobs").map(_.toInt).getOrElse( DEFAULT_MAX_JOBS  )
      , (xml >?> "interpreter").map( _ ?*! "part" ).getOrElse( DEFAULT_INTERPRETER )
+     , xml ? "workingDirectory"
     )
   }
   
@@ -70,7 +71,8 @@ object ConfigReader extends Logs with ConfigConstants {
       node ?!  "id"
      ,Command ( node ?! "command"
                ,node ?* "pre"
-               ,node ?* "post" )
+               ,node ?* "post"
+               ,node ? "workingDirectory")
      ,handleReaderNodes( (node \  "reader").toList )
      ,node ?* "file"
      ,( node \ "writer" ).map(this.getWriter(_)).toList
