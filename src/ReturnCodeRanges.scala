@@ -1,6 +1,6 @@
 package edWood.returnCodes
 
-trait ReturnCodeRange {
+sealed trait ReturnCodeRange {
   def contains(i:Int):Boolean
 }
 
