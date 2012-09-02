@@ -18,9 +18,10 @@ class Worker extends Actor with Logs {
 
       info("Worker: starting")
 
-      val executor = ExecutorFactory.getExecutor(config.command.main)
-      val preJobs = config.command.pre.map( ExecutorFactory.getExecutor(_) )
-      val postJobs = config.command.post.map( ExecutorFactory.getExecutor(_) )
+      val wd = config.command.workingDirectory
+      val executor = ExecutorFactory.getExecutor(config.command.main, wd)
+      val preJobs = config.command.pre.map( ExecutorFactory.getExecutor(_, wd))
+      val postJobs = config.command.post.map( ExecutorFactory.getExecutor(_, wd))
 
       val stopableHub = StopableHub( preJobs ++ (executor :: postJobs ) )
 

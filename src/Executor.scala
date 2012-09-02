@@ -14,14 +14,25 @@ object ExecutorFactory extends Logs {
 
 
   private var interpreterLocal = List("/bin/sh", "-c") 
+  private var workDirLocal:Option[String] = None
+
+  def workDir = workDirLocal
+  def workDir_=(wd:Option[String]) = {
+    debug("setting workDir to " + wd.getOrElse("current workDirectory"))
+    workDirLocal = wd
+  }
 
   def interpreter = interpreterLocal
   def interpreter_=(i:List[String]) = {
     debug("setting interpreter to " + i)
     interpreterLocal = i
   }
+
+  private def wdToChange(wd:Option[String]) = wd.map("cd " ++ _ ++ " ;").getOrElse("")
+
+  private def changeWd =wdToChange(this.workDir)
   
-  def getExecutor(command:String):Executor = ExecutorImpl(command, interpreter)
+  def getExecutor(command:String, wd:Option[String]):Executor = ExecutorImpl( changeWd ++ wdToChange(wd) ++ command, interpreter)
   
 }
 

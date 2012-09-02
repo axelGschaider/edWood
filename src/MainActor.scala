@@ -53,6 +53,7 @@ class MainActor extends Actor with Logs {
 
 
     ExecutorFactory.interpreter = config.general.interpreter
+    ExecutorFactory.workDir = config.general.workingDirectory
 
     this.handle = handle
     this.jobs = config.jobs

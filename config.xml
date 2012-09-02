@@ -9,8 +9,8 @@
   <interpreter>
     <part>/bin/sh</part>
     <part>-c</part>
-    <workingDirectory>runDirectory</workingDirectory>
   </interpreter>
+  <workingDirectory>runDirectory</workingDirectory>
   <job>
     <id>0</id>
     <!-- this reader basically does nothing. just wastes time and 
