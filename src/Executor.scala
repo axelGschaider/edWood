@@ -37,13 +37,12 @@ object ExecutorFactory extends Logs {
 }
 
 
-trait Executor extends Runable with ProcessInput with Logs {
+trait Executor extends Runable with ProcessInput  {
   def exec(wait:Boolean)
 }
 
-private case class ExecutorImpl(command:String, interpreter:List[String]) extends Executor {
+private case class ExecutorImpl(command:String, interpreter:List[String]) extends Executor with Logs {
   
-
   var process:Option[Process] = None
 
   def getProcess = process match {
