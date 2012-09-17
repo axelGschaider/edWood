@@ -22,17 +22,17 @@ class MainActor extends Actor with Logs {
     }
     case x:Workload2Main => x match {
       case GimmeNew         => {
-                                 debug("MainActor: got GimmeNew")
+                                 debug("got GimmeNew")
                                  this.getNewJob() match {
                                    case Some(j) => this.workloadBalancer ! NewJob(j)
                                    case None    => this.workloadBalancer ! NoMore
                                  }
                                }
       case AllDone          => {
-                                 debug("MainActor: got AllDone")
+                                 debug("got AllDone")
                                  this.stop()
                                }
-      case CantExceptNow(c) => {this.jobs = c :: this.jobs; info("MainActor: got back a job. '" + c.id + "'") }
+      case CantExceptNow(c) => {this.jobs = c :: this.jobs; info("got back a job. '" + c.id + "'") }
     }
   }
 
@@ -46,7 +46,7 @@ class MainActor extends Actor with Logs {
 
   private def init(config:GlobalConfig, handle: Stopable) = {
 
-    info("init MainActor")
+    info("init")
 
     if(workloadBalancer != null)
       throw new Exception("can't be initialiced twice")
@@ -64,7 +64,7 @@ class MainActor extends Actor with Logs {
 
   private def getNewJob():Option[JobConfig] = this.jobs match {
     case (j::js) => { this.jobs = js
-                      debug("MainActor: sending job with id " + j.id)
+                      debug("sending job with id " + j.id)
                       Some(j) }
     case Nil     => None
   }

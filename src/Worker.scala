@@ -16,7 +16,7 @@ class Worker extends Actor with Logs {
   def receive = {
     case Start(config) => {
 
-      info("Worker: starting")
+      info("starting")
 
       val wd = config.command.workingDirectory
       val executor = ExecutorFactory.getExecutor(config.command.main, wd)

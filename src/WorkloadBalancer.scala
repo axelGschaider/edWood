@@ -26,21 +26,21 @@ class WorkloadBalancer extends Actor with Logs {
                          case None    => this.callBack ! CantExceptNow(config)
                              }
       case NoMore         => { noMore = true
-                               info("WorkloadManager: no more jobs for me")
+                               info("no more jobs for me")
                                if(jobs.size == 0) callBack ! AllDone }
       case StopAll        => { noMore = true
                                warn("killing all worker actors")
                                this.jobs.values.foreach( _.actor ! Cancel ) }
     }
     case x:Proxy2Workload => x match {
-      case Done(config) => { info("WorkloadBalancer: got Done(" + config.id + ")")
+      case Done(config) => { info("got Done(" + config.id + ")")
                              oneDone(config).foreach( this.callBack ! _ ) }
     }
   }
 
   private def init(config:GeneralConfig) = {
 
-    info("init WorkloadBalancer")
+    info("init")
 
     if(this.callBack != null)
       throw new Exception("can't be initialiced twice")
@@ -78,7 +78,7 @@ class WorkloadBalancer extends Actor with Logs {
       }
     }
     else {
-      debug("WorkloadBalancer: requesting new")
+      debug("requesting new")
       Some(GimmeNew)
     }
 

@@ -17,7 +17,7 @@ class WorkerProxy extends Actor with Logs {
     
     case x:Workload2Proxy => x match {
       case Work(config) =>
-        { info("WorkerProxy: starting Worker")
+        { info("starting Worker")
           context.actorOf(Props[Worker]) ! Start(config)
           this.config = config
           callBack = sender }
