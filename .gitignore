@@ -1,8 +1,4 @@
+.cache
+.settings/
 bin/
-edWood.log
-output.txt
-.*.swp
-specialCharTest.txt
-custom/bin/
-custom/bin/myCustom/
-*.class
+*.jar
