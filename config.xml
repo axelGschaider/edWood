@@ -1,0 +1,99 @@
+<edWood>
+  <!-- this is used and needed for the actor system. 
+       Must be unique on every computer. -->
+  <instanceId>edWood</instanceId>  
+  <!-- Defines how many jobs can be run in parallel. Change to '1' to
+       run all jobs in sequence or to '6' to run them all in 
+       parallel. Or anything in between . . . -->
+  <maxJobs>2</maxJobs>
+  <interpreter>
+    <part>/bin/sh</part>
+    <part>-c</part>
+  </interpreter>
+  <workingDirectory>runDirectory</workingDirectory>
+  <job>
+    <id>0</id>
+    <!-- this reader basically does nothing. just wastes time and 
+         prints out the the result of 'sleep 5' . . . which is 
+         nothing ;) -->
+    <command>sleep 5</command>
+    <reader>
+      <!-- loads the DummyReader2 and tests it during the startup
+           phase. Try changing it to DummyReader1. The class will be
+           loaded but the interchanged data objects will not fit.
+           Hence an exception will be thrown. -->
+      <classPath>edWood.dummy.DummyReader2</classPath>
+    </reader>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
+  </job>
+  <job>
+    <id>1</id>
+    <workingDirectory>..</workingDirectory>
+    <command>find</command>
+    <!-- prints the contents of the 'find' command to a file -->
+    <reader>
+      <classPath>edWood.dummy.DummyReader1</classPath>
+    </reader>
+    <writer>
+      <!-- writers (and readers) can be configured at runtime by 
+           passing some string arguments to it during startup phase.
+           DummyWriter1 expects one string arg with the name of the
+           file to write to . . . -->
+      <classPath>edWood.dummy.DummyWriter1</classPath>
+      <!-- . . . and this is how it is specified -->
+      <arg>output.txt</arg>
+    </writer>
+  </job>
+  <job>
+    <id>2</id>
+    <!-- nothing special to explain in this job. just printing the
+         date. -->
+    <command>date</command>
+    <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
+  </job>
+  <job>
+    <id>3</id>
+    <!-- Here we demonstrate pre commands.
+         Such commands will be executed before the main command.
+         They are not used as inputs. In this case we just wait a
+         little before starting to work (which is printing the
+         contents of the current directory). -->
+    <pre>sleep 5</pre>
+    <!-- here we also test pipes -->
+    <command>ls | grep eval</command>
+    <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
+  </job>
+  <job>
+    <id>4</id>
+    <!-- Two interesting things in this job.
+         A) we use readers and writers from the custom folder. These
+            classes are compiled appart from the main edWood.
+            So this is used to demonstrate that adapters can be 
+            developed without touching the main tool.
+         B) This job fail! Somebody put division by zero in there.
+            Life will go on without harming other jobs. -->
+    <command>sleep 2</command>
+    <reader><classPath>myCustom.Reader</classPath></reader>
+    <writer><classPath>myCustom.Writer</classPath></writer>
+  </job>
+  <job>
+    <id>5</id>
+    <pre>ls > specialCharTest.txt</pre>
+    <pre><![CDATA[grep do < specialCharTest.txt]]></pre>
+    <pre><![CDATA[sleep 1 && ls]]></pre>
+    <!-- The command of this job will copy the config file to tmp.txt.
+         With the <file> tag this file is defined as an input file 
+         that will be handed to the reader. The reader scanns it and
+         hands it over to the writer which prints it.
+         Later we will use a post command to remove the file. So you
+         will not find it after the run. -->
+    <command>cp config.xml tmp.txt</command>
+    <workingDirectory>~/github/edWood</workingDirectory>
+    <file>tmp.txt</file>
+    <post>rm tmp.txt</post>
+    <reader><classPath>edWood.dummy.DummyReader3</classPath></reader>
+    <writer><classPath>edWood.dummy.DummyWriter3</classPath></writer>
+  </job>
+</edWood>
