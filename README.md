@@ -5,7 +5,7 @@ frequent change.
 
 1) FOLDERS AND FILES
 
-    bin/        holds the compiled java class files
+The sbt defaults are respected. Additional files are:
 
     config.xml  a config file for edWood. Usually filled with debugging
                 and demonstration purposes in mind.
@@ -15,20 +15,12 @@ frequent change.
                 folder (for sources) and a bin/ folder (for the 
                 compiled class files)
 
-    doc/        Currently not in use but will hold javadocs and
-                scaladocs.
-
     edWood.properties
                 the config file for log4j
 
-    lib/        holds all needed libraries
-
-    makefile    the make file
-
     README      this file
-    
-    src/        holds all the source files
 
+    *.log       log files. Can be savely deleted after edWood has stopped
 
 2) ON UNIX AND WINDOWS
 
@@ -40,9 +32,11 @@ not been tested.
 
 3) INSTALLATION AND RUNNING
 
+TODO: update the chapter!!! Now sbt is needed and make no longer supported
+
 Large parts of edWood are written in Scala. Nontheless the scala library 
-is provided in the lib/ and all that is needed to run the edWood is 
-Java 1.6 (or higher) and make.
+is provided as sbt dependecy and all that is needed to run the edWood is 
+Java 1.6 (or higher) and sbt.
 edWood can be run with the following command:
     
     make ed
@@ -57,6 +51,8 @@ tools like date, ls and find.
 
 
 4) COMPILING EDWOOD
+
+TODO: update the chapter!!! Now sbt is needed and make no longer supported
 
 In order to compile the edWood will need to have scala 2.9.\*
 installed. Go to www.scala-lang.org/downloads and follow the
@@ -74,6 +70,8 @@ or
 
 
 5) COMPILING CUSTOM ADAPTERS
+
+TODO: update the chapter!!! Now sbt is needed and make no longer supported
 
 To develope and run custom adapters it is not required to install
 scala. Just put your sources in ./custom/src/ and run
@@ -93,26 +91,4 @@ ReaderAdapters have to implement the following interface
 WriterAdapters have to implement the following interface
 
     edWood.writer.WriterAdapter
-
-
-6) MAKE COMMANDS
-
-    ed              runs edWood with config.xml
-
-    all             compiles all java and scala source in src/
-
-    clean           cleans the src/ folder
-
-    cleanCustom     cleans the custom/ folder
-
-    todos           prints out all occurences of "todo" in all files
-                    in src/
-
-    prints          prints out all occurences of "println" in all
-                    files in src/
-
-    java            compiles all java sources in the /src
-
-    customAdapters  compiles all custom java dapters
-
 
