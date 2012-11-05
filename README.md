@@ -1,3 +1,4 @@
+__README HAS NOT BEEN UPDATED SINCE THE MOVE TO SBT__
 
 This README is only valid for developers and will be subject to
 frequent change.
