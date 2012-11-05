@@ -129,7 +129,7 @@ class ConfigReaderTest extends FunSuite {
     assert(job.reader.getDescription() == "DummyReader1")
     assert(job.writers.length == 2)
     assert(job.writers.head.getDescription() == "DummyWriter1")
-    assert(job.writers.head.getDescription() == "DummyWriter2")
+    assert(job.writers.tail.head.getDescription() == "DummyWriter2")
     
       
   } 
