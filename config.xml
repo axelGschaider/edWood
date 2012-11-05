@@ -65,8 +65,6 @@
     <reader><classPath>edWood.dummy.DummyReader2</classPath></reader>
     <writer><classPath>edWood.dummy.DummyWriter2</classPath></writer>
   </job>
-  <job>
-    <id>4</id>
     <!-- Two interesting things in this job.
          A) we use readers and writers from the custom folder. These
             classes are compiled appart from the main edWood.
@@ -74,10 +72,12 @@
             developed without touching the main tool.
          B) This job fail! Somebody put division by zero in there.
             Life will go on without harming other jobs. -->
+  <!--job>
+    <id>4</id>
     <command>sleep 2</command>
     <reader><classPath>myCustom.Reader</classPath></reader>
     <writer><classPath>myCustom.Writer</classPath></writer>
-  </job>
+  </job-->
   <job>
     <id>5</id>
     <pre>ls > specialCharTest.txt</pre>

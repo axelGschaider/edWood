@@ -1,0 +1,6 @@
+[0m[[0minfo[0m] [0m[32mConfigReaderTest:[0m[0m
+[0m[[0minfo[0m] [0m[32m- minimal xml without jobs[0m[0m
+[0m[[0minfo[0m] [0m[32m- maximal xml without jobs[0m[0m
+[0m[[0minfo[0m] [0m[32m- single minimal job[0m[0m
+[0m[[0minfo[0m] [0m[31m- single maximal job *** FAILED ***[0m[0m
+[0m[[0minfo[0m] [0m[31m  org.scalatest.exceptions.TestFailedException was thrown. (ConfigReaderTest.scala:132)[0m[0m

@@ -1,0 +1,27 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/home/agl/playground/sbt/edWood/src/test/scala/edWood/ConfigReaderTest.scala)[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set(/home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes/edWood/ConfigReaderTest$$anonfun$1.class, /home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes/edWood/ConfigReaderTest$$anonfun$4.class, /home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes/edWood/ConfigReaderTest$$anonfun$2.class, /home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes/edWood/ConfigReaderTest.class, /home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes/edWood/ConfigReaderTest$$anonfun$3.class)[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/agl/playground/sbt/edWood/src/test/scala/edWood/ConfigReaderTest.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set(/home/agl/playground/sbt/edWood/src/test/scala/edWood/ConfigReaderTest.scala)[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mInitially invalidated: Set(/home/agl/playground/sbt/edWood/src/test/scala/edWood/ConfigReaderTest.scala)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes...[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 218c34f, interfacing (CompilerInterface) with Scala compiler version 2.9.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/netx.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/plugin.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-openjdk-amd64/jre/classes:/home/agl/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/agl/playground/sbt/edWood/target/scala-2.9.2/test-classes:/home/agl/playground/sbt/edWood/target/scala-2.9.2/classes:/home/agl/.ivy2/cache/com.typesafe.akka/akka-actor/jars/akka-actor-2.0.3.jar:/home/agl/.ivy2/cache/com.typesafe/config/bundles/config-0.3.1.jar:/home/agl/.ivy2/cache/com.typesafe.akka/akka-testkit/jars/akka-testkit-2.0.3.jar:/home/agl/.ivy2/cache/log4j/log4j/bundles/log4j-1.2.16.jar:/home/agl/.ivy2/cache/org.scalaz/scalaz-core_2.9.2/jars/scalaz-core_2.9.2-6.0.3.jar:/home/agl/.ivy2/cache/org.scalamock/scalamock-scalatest-support_2.9.2/jars/scalamock-scalatest-support_2.9.2-2.4.jar:/home/agl/.ivy2/cache/org.scalamock/scalamock-core_2.9.2/jars/scalamock-core_2.9.2-2.4.jar:/home/agl/.ivy2/cache/org.scalatest/scalatest_2.9.2/jars/scalatest_2.9.2-1.8.jar:/home/agl/.ivy2/cache/junit/junit/jars/junit-4.10.jar:/home/agl/.ivy2/cache/org.hamcrest/hamcrest-core/jars/hamcrest-core-1.1.jar:/home/agl/.ivy2/cache/org.scalacheck/scalacheck_2.9.2/jars/scalacheck_2.9.2-1.10.0.jar:/home/agl/.ivy2/cache/org.scala-tools.testing/test-interface/jars/test-interface-0.5.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 3.582463595 s[0m
+[0m[[0mdebug[0m] [0m	Invalidated direct: Set()[0m
+[0m[[0mdebug[0m] [0mIncrementally invalidated: Set()[0m
