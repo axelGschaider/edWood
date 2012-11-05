@@ -9,6 +9,11 @@ import at.axelGschaider.loggsNProperties._
 import edWood.config.GeneralConfig
 
 
+
+trait Executor extends Runable with ProcessInput  {
+  def exec(wait:Boolean)
+}
+
 object ExecutorFactory extends DefaultLogs {
 
 
@@ -28,18 +33,17 @@ object ExecutorFactory extends DefaultLogs {
     interpreterLocal = i
   }
 
-  private def wdToChange(wd:Option[String]) = wd.map("cd " ++ _ ++ " ;").getOrElse("")
+  private def wdToChange(wd:Option[String]) = wd.map("cd " + _ + " ;").getOrElse("")
 
-  private def changeWd =wdToChange(this.workDir)
+  private def changeWd = wdToChange(this.workDir)
   
-  def getExecutor(id:String, command:String, wd:Option[String]):Executor = ExecutorImpl(id, changeWd ++ wdToChange(wd) ++ command, interpreter)
+  def getExecutor(id:String, command:String, wd:Option[String]):Executor = 
+    ExecutorImpl(id, 
+                 changeWd + wdToChange(wd) + command, 
+                 interpreter)
   
 }
 
-
-trait Executor extends Runable with ProcessInput  {
-  def exec(wait:Boolean)
-}
 
 private case class ExecutorImpl(loggingId:String, command:String, interpreter:List[String]) extends Executor with LogsWithId {
   
@@ -53,12 +57,15 @@ private case class ExecutorImpl(loggingId:String, command:String, interpreter:Li
   def run() = exec(false)
 
   def exec(wait:Boolean) = {
-    debug("running '" + command + "'")
     val commandList = interpreter :+ command
+    val commandArray = commandList.toArray  
+
+    debug("running '" + command + "'")
     debug("commandList: " + commandList)
-    val commandArray = commandList.toArray  //Array("/bin/sh", "-c", command)
+    
     val p = Runtime.getRuntime().exec(commandArray)
     this.process = Some(p)
+    
     if(wait) p.waitFor
   }
 

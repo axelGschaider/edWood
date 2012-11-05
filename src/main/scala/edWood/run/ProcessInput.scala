@@ -14,16 +14,6 @@ trait ProcessInput extends LifeInput {
 
   def getCombinedInput() = StdStreamInput(getProcess) //TODO implement
 
-
-}
-
-
-class StreamInput(identifier:String, stream:InputStream) extends Input {
-  def getIdentifier = identifier
-
-  private lazy val iterator:Iterator[String] = StreamIterator(stream)
-
-  def getIterator = iterator
 }
 
 case class StdStreamInput(process:Process) extends StreamInput("std", process.getInputStream())
@@ -31,21 +21,27 @@ case class StdStreamInput(process:Process) extends StreamInput("std", process.ge
 case class ErrStreamInput(process:Process) extends StreamInput("err", process.getErrorStream())
 
 case class StreamIterator(stream:InputStream) extends Iterator[String] {
-    val reader = new BufferedReader(new InputStreamReader(stream))
 
-    var nextLine = reader.readLine
-    
-    def hasNext():Boolean = nextLine != null
-    
-    def next():String = {
-      val ret = this.nextLine
-      this.nextLine = reader.readLine
-      ret
-    }
+  val reader = new BufferedReader(new InputStreamReader(stream))
 
+  var nextLine = reader.readLine
+  
+  def hasNext():Boolean = nextLine != null
+  
+  def next():String = {
+    val ret = this.nextLine
+    this.nextLine = reader.readLine
+    ret
+  }
 
-    def remove = { }
-
+  def remove = { }
 
 }
 
+abstract class StreamInput(identifier:String, stream:InputStream) extends Input {
+  def getIdentifier = identifier
+
+  private lazy val iterator:Iterator[String] = StreamIterator(stream)
+
+  def getIterator = iterator
+}

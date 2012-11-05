@@ -40,7 +40,6 @@ object EdWood extends DefaultLogs {
 
 
     KickOff.start(config)
-    //KickOff.forceShutdown
 
   }
 
