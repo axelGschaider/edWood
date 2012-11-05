@@ -3,13 +3,6 @@ package edWood.data
 import java.util.Iterator;
 import java.io.{File,BufferedReader,FileReader}
 
-/**
- * Created by IntelliJ IDEA.
- * User: axel
- * Date: 26.03.12
- * Time: 18:56
- * To change this template use File | Settings | File Templates.
- */
 
 case class InputImpl(identifier:String, iterator:Iterator[String] ) extends Input {
   override def getIdentifier:String = identifier
