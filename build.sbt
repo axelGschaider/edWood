@@ -30,8 +30,8 @@ libraryDependencies ++= Seq(
   "org.scalacheck" %% "scalacheck" % "1.10.0" % "test"
 )
 
-libraryDependencies +=
-  "org.scalamock" %% "scalamock-scalatest-support" % "latest.integration"
+//libraryDependencies +=
+//  "org.scalamock" %% "scalamock-scalatest-support" % "latest.integration"
 
 
 mainClass := Some("edWood.EdWood")

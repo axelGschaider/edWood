@@ -24,20 +24,43 @@ class ConfigValidatorTest extends FunSuite {
    ConfigValidator.testIds(List(jobConf("lala")))
    
  }
+
+ test("multiple IDs - should work") {
+   
+   ConfigValidator.testIds(
+     jobConfs( List( "1", "2", "3", "4", "5" ) )
+   )
+
+ }
  
+ test("multiple IDs - should fail") {
+   try {
+     ConfigValidator.testIds(
+       jobConfs( List( "1", "2", "3", "4", "5" ) )
+     )
+
+     assert(false)
+
+   } catch {
+     case _ => {} //TODO change to "expected"
+   }
+ }
+
+  test("job counter") {
+    ConfigValidator testGeneralConfig GeneralConfig("", 1, Nil, None)
+  }
  
  def jobConfs(ids:List[String]) = ids.map(jobConf(_))
  
- def jobConf(id:String) {
+ def jobConf(id:String) =
    JobConfig(
-       "id",
+       id,
        Command("lalala", Nil, Nil, None),
        dummyReader,
        Nil,
        Nil
      )
- }
- 
+
  val dummyReader = new ReaderAdapter() {
    
    override def getDescription() = "dummy"
