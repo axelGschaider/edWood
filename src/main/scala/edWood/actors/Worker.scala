@@ -52,11 +52,13 @@ class Worker extends Actor with LogsWithLazyId {
   
         //executor.error().map(Failed(_)).getOrElse(Success)
         
-        info( "id " + config.id + ": sending " + message)
+        info( "sending " + message)
         sender ! message
       } catch {
         case e:Exception => { stopableHub.stop
-                              sender ! Failed(config.id + ": job died with error '" + e.getMessage + "'") }
+                              val msg = "job died with error '" + e.getMessage + "'"
+                              error(msg)
+                              sender ! Failed(config.id + ": " + msg) }
       }
 
 

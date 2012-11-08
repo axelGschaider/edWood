@@ -60,7 +60,7 @@ private case class ExecutorImpl(loggingId:String, command:String, interpreter:Li
     val commandList = interpreter :+ command
     val commandArray = commandList.toArray  
 
-    debug("running '" + command + "'")
+    info("running '" + command + "'")
     debug("commandList: " + commandList)
     
     val p = Runtime.getRuntime().exec(commandArray)
