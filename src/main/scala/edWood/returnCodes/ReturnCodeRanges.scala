@@ -17,11 +17,19 @@ case class Negator(x:ReturnCodeRange) extends ReturnCodeRange {
   def contains(i:Int) = ! x.contains(i)
 }
 
+case class And(a:ReturnCodeRange, b:ReturnCodeRange) extends ReturnCodeRange {
+  def contains(i:Int) = a.contains(i) && b.contains(i)
+}
+
+case class Or(a:ReturnCodeRange, b:ReturnCodeRange) extends ReturnCodeRange {
+  def contains(i:Int) = a.contains(i) || b.contains(i)
+}
+
 case object AlwaysSuccess extends ReturnCodeRange {
   def contains(i:Int) = true
 }
 
-case object AlwayFail extends ReturnCodeRange {
+case object AlwaysFail extends ReturnCodeRange {
   def contains(i:Int) = false
 }
 

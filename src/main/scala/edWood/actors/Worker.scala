@@ -49,8 +49,6 @@ class Worker extends Actor with LogsWithLazyId {
         
         postJobs.foreach( _ exec true )
   
-        //executor.error().map(Failed(_)).getOrElse(Success)
-        
         info( "sending " + message)
         sender ! message
       } catch {
