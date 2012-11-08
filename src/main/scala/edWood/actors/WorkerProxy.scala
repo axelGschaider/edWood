@@ -4,7 +4,7 @@ import edWood.actors.messages._
 import edWood.config._
 import edWood.run.Stopable
 
-import akka.actor.{Actor, ActorRef, Props}
+import akka.actor.{Actor, ActorRef, Props, Terminated}
 import at.axelGschaider.loggsNProperties.DefaultLogs
 
 class WorkerProxy extends Actor with DefaultLogs {
@@ -18,7 +18,9 @@ class WorkerProxy extends Actor with DefaultLogs {
     case x:Workload2Proxy => x match {
       case Work(config) =>
         { info("starting Worker")
-          context.actorOf(Props[Worker]) ! Start(config)
+          val worker = context.actorOf(Props[Worker]) 
+          context.watch(worker)
+          worker ! Start(config)
           this.config = config
           callBack = sender }
       case Cancel => this.handle foreach (_.stop())
@@ -31,6 +33,13 @@ class WorkerProxy extends Actor with DefaultLogs {
                             this.callBack ! Done(this.config) }
       case MyHandle(h) => this.handle = Some(h)
     }
+
+    case Terminated(_) => { error("Worker died unexpectedly.")
+                            this.handle foreach {
+                              warn("Trying to kill underlying process...")
+                              _.stop()
+                            }
+                            this.callBack ! Done(this.config) }
 
   }
 

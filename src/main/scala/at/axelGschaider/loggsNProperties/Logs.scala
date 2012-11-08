@@ -55,7 +55,10 @@ package at.axelGschaider.loggsNProperties {
   trait LogsWithLazyId extends LogsWithId {
     private var lid:Option[String] = None
 
-    def setLoggingId(i:String) = lid = Some(i)
+    def setLoggingId(i:String) = {
+      println("HAAAAAAAAALLO: " + i)
+      lid = Some(i)
+    }
 
     override def loggingId = lid.getOrElse("°no id°")
 

@@ -19,3 +19,4 @@ X   auch errOut als Input heranziehen
 X   command interpreter überschreibbar machen
 X   configTester verbessern
 X   255 Error untersuchen -> custom adapters have not been recompiled.
+X   Fehler bei Erzeugung des Actors -> Slot wird nicht wieder frei gegeben
