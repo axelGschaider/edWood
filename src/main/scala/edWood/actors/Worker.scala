@@ -35,7 +35,6 @@ class Worker extends Actor with LogsWithLazyId {
         preJobs.foreach( _ exec true )
 
         executor.run
-        debug("config: " + config.id)
         config.reader readLife executor
         val fileInputs:List[Input] = config.files.map( f => FileInputImpl(f, new File(f)) )
         config.reader readPostRunSources fileInputs.toArray
