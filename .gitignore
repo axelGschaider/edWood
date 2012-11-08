@@ -9,3 +9,5 @@ bin/
 target/
 *.swp
 tags
+output.txt
+specialCharTest.txt
