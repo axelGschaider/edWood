@@ -7,6 +7,7 @@ package at.axelGschaider.loggsNProperties {
 
     def getName():String;
 
+    //TODO this might need to be resetted in lazy logger?
     private[this] lazy val logger = Logger.getLogger(getName());
 
     import org.apache.log4j.Level._
