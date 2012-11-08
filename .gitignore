@@ -11,3 +11,4 @@ target/
 tags
 output.txt
 specialCharTest.txt
+runDirectory/
