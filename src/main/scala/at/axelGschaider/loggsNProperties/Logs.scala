@@ -7,7 +7,7 @@ package at.axelGschaider.loggsNProperties {
 
     def getName():String;
 
-    private[this] val logger = Logger.getLogger(getName());
+    private[this] lazy val logger = Logger.getLogger(getName());
 
     import org.apache.log4j.Level._
 
@@ -53,14 +53,13 @@ package at.axelGschaider.loggsNProperties {
   }
 
   trait LogsWithLazyId extends LogsWithId {
-    private var lid:Option[String] = None
+    private var internalId:Option[String] = None
 
     def setLoggingId(i:String) = {
-      println("HAAAAAAAAALLO: " + i)
-      lid = Some(i)
+      internalId = Some(i)
     }
 
-    override def loggingId = lid.getOrElse("°no id°")
+    override def loggingId = internalId.getOrElse("°no id°")
 
   }
 
