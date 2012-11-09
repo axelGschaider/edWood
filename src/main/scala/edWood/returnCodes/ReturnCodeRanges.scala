@@ -13,7 +13,7 @@ case class Range(start:Int, end:Int) extends ReturnCodeRange {
   def contains(i:Int) = (i >= start) && (i <= end)
 }
 
-case class Negator(x:ReturnCodeRange) extends ReturnCodeRange {
+case class Not(x:ReturnCodeRange) extends ReturnCodeRange {
   def contains(i:Int) = ! x.contains(i)
 }
 

@@ -5,22 +5,57 @@ import edWood.xmlHelpers._
 import edWood.xmlHelpers.Implicits._
 
 import at.axelGschaider.utils.Utils._
+import at.axelGschaider.loggsNProperties.DefaultLogs
+
 
 import scala.xml._
 
-object ReturnCodeRangeReader {
+object ReturnCodeRangeReader extends DefaultLogs {
   
   implicit def int2ReturnCodeRange(i:Int):ReturnCodeRange = SingleVal(i)
+  implicit def node2ReturnCodeRange(xml:Node):ReturnCodeRange = handleTag(xml)
 
-  def read(xml:Elem):ReturnCodeRange = {
-    val elements = children(xml)
-    
-    elements match {
-      case Nil => parseText( xml.text )
-      case _   => AlwaysFail
+  def read(xml:Elem):ReturnCodeRange = children(xml) match {
+      case Nil      => parseText( xml )
+      case a :: Nil => handleTag(a)
+      case _        => throw new ReadXmlException("multiple elements in base tag")
     }
 
+
+
+  private def handleTag(xml:Node):ReturnCodeRange = {
+    val kids = children(xml)
+    
+    xml.label.trim match {
+      case "and"  => and(kids)
+      case "or"   => or(kids)
+      case "not"  => not(xml)
+      case a      => if(kids.length == 0) parseText( xml )
+                     else throw new ReadXmlException("unknown tag <" + a + "> with children")
+    }
   }
+
+  private def not(xml:Node):ReturnCodeRange = children(xml) match {
+    case Nil      => Not( parseText(xml) )
+    case a :: Nil => Not( a )
+    case _        => throw new ReadXmlException("<not>-tag with multiple children")
+  }
+
+  private def or(nodes:List[Node]):ReturnCodeRange = nodes match {
+    case Nil            => { warn("empty <or>-tag"); AlwaysFail }
+    case a :: Nil       => { warn("<or>-tag with single element"); a}
+    case a :: b :: Nil  => Or(a, b)
+    case a :: as        => Or(a, or(as) )
+  }
+
+  private def and(nodes:List[Node]):ReturnCodeRange = nodes match {
+    case Nil            => { warn("empty <and>-tag"); AlwaysFail }
+    case a :: Nil       => { warn("<and>-tag with single element"); a}
+    case a :: b :: Nil  => And(a, b)
+    case a :: as        => And(a, and(as) )
+  }
+
+  private def parseText(xml:Node):ReturnCodeRange = parseText(xml.text)
 
   private def parseText(text:String):ReturnCodeRange = {
 
@@ -41,7 +76,7 @@ object ReturnCodeRangeReader {
     case (a :: as)        => Or(a.trim.toInt, readSplitList(as))
   }
 
-  private def children(xml:Elem):List[Node] = (xml \ "_").toList
+  private def children(xml:Node):List[Node] = (xml \ "_").toList
 
 }
 

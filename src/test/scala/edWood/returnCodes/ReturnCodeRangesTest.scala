@@ -42,8 +42,8 @@ class FixedReturnCodesTests extends FunSuite {
     assert(v contains 3)
   }
 
-  test("Negator") {
-    val n1 = Negator(singleVal)
+  test("Not") {
+    val n1 = Not(singleVal)
     assert(n1 contains 14)
     assert(!n1.contains(13) )
 
