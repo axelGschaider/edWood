@@ -196,5 +196,16 @@ class ReturnCodeReaderTest extends FunSuite {
     assert(thrown.getMessage == "unknown tag <notOk> with children")
   }
 
+  test("empty range with odd name") {
+    val d = <seppl></seppl> //base tag name does not matter
+    val range = ReturnCodeRangeReader read d
+
+    assert(!range.contains(0))
+    assert(!range.contains(1))
+    assert(!range.contains(2))
+
+  }
+
+
 }
 
