@@ -41,6 +41,10 @@
          prints out the the result of 'sleep 5' . . . which is 
          nothing ;) -->
     <command>sleep 5</command>
+    <mapping ref="refs">
+      <naming name="doing a thing">101</naming>
+      <failure name="the same thing!">101</failure>
+    </mapping>
     <reader>
       <!-- loads the DummyReader2 and tests it during the startup
            phase. Try changing it to DummyReader1. The class will be
