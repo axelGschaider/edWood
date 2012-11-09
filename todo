@@ -2,14 +2,14 @@ O   returncodes unterstützen. Abarbeitung nach folgendem Schema
           Code -> Allow List -> Error List -> Default (>0 -> Error)
 O   profiles für return codes
 O   mapping von return codes auf String Name (auch mit Ranges)
-O   Vorgeführten Bug näher untersuchen (Flush, close, sleep)
-O   sind named pipes als Input möglich?
 O   kombinierten Input implementieren
 O   Resourcen begrenzen (MB und Sekunden). Möglichen Abbruch loggen.
+O   Vorgeführten Bug näher untersuchen (Flush, close, sleep)
 O   Logging messages umstellen: grundsätzlich kürzen und Zeit im syslog format
-O   Job id im log auch vorne.
-O   ein Job stirbt "for unknow reason"
+O   sind named pipes als Input möglich?
 
+X   Job id im log auch vorne.
+X   ein Job stirbt "for unknow reason"
 X   besserer WorkingDirectory Support. Global (als default) und per Job (relativ zu global oder absolut)
 X   XML Sonderzeichen in Kommandos unterstützen (bzw überprüfen, ob das eh schon passt)
 X   pipes in Kommandos unterstützen
