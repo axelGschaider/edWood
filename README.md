@@ -1,4 +1,58 @@
-__README HAS NOT BEEN UPDATED SINCE THE MOVE TO SBT__
+#Installing and running edWood
+Currently there is only information about how to run edWood from source. A fat
+jar and instructions how to run it will be added at some point in the future.
+##SBT
+edWood is being developed using [SBT](http://www.scala-sbt.org/) so this is the
+recommended and best tested way to install and use the developement branch.
+Download and isntall SBT as described on the 
+[homepage](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html).
+The rest of this chapter adresses unexpereinced SBT users:
+
+In a terminal go to the base directory of edWood and run `sbt`. This starts an
+interactive shell that allowes you to run some commands:
+
+    `compile` resolves all dependencies and compiles the programm
+
+    `test`    resolves all dependencies and runnes all tests
+
+    `run` *configFile* runnes edWood with the given config file
+
+    `clean`   cleanes the workspace
+
+If this is the your first run of sbt it will start downloading some 
+dependencies right away.
+The first steps should be to run `compile` to see if everything is ok and to
+download all needed project specific libraries. Then run `test` to run the tests
+and download additional dependencies.
+From now on you are ready to run `run config.xml`. This will run edWood with the
+provided `config.xml`.
+##Eclipse
+Feel free to use any scala plugin for eclipse but I highly recommend the 
+"official" [Scala IDE](http://scala-ide.org/) for the best out-of-the box
+experience.
+###Eclipse & SBT
+If you want to develope edWood with Eclipse and the easiest way is to use the
+[sbteclipse plugin](https://github.com/typesafehub/sbteclipse). This is a 
+plugin for sbt that allowes you to create the `.classpath` and `.project` files
+for eclipse.
+
+This plugin is added to the project dependencies. So all you need to do after
+compiling is to run the command `eclipse` in the sbt shell (you might have to
+restart sbt after the dependencies have been resolved). After this you can
+import the base directory of edWood as Scala project into eclipse. Don't choose
+the "copy to workspace" option (you can move the base directory to your 
+workspace before importing).
+Now you can follow your usual workflow without needing sbt. 
+###Eclipse without sbt
+This is absolutely untested but might provide some information for you if you,
+for some reason, do not want to install sbt. There is a `.project` and a
+`.classpath` file included in the folder `eclipse/`. Copy these files to the 
+base folder of edWood you should be a able to import the base folder as project
+right away. The problem is that you will have lots of unresolved dependencies
+that you will have to download and reset manually.
+
+
+__EVERYTHING BELLOW THIS POINT IS OUTDATED AND WILL BE REMOVED SOON__
 
 This README is only valid for developers and will be subject to
 frequent change.
