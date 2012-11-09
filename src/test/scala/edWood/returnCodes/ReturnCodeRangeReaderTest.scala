@@ -116,8 +116,6 @@ class ReturnCodeReaderTest extends FunSuite {
 
     val range = ReturnCodeRangeReader read d
      
-    println(range)
-
     assert(range.contains(0))
     assert(!range.contains(1))
     assert(range.contains(2))
