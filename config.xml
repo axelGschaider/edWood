@@ -11,6 +11,30 @@
     <part>-c</part>
   </interpreter>
   <workingDirectory>runDirectory</workingDirectory>
+  <ranges>
+    <crazyOne id="crazy">0, 666</crazyOne>
+    <range id="range">
+      <and>
+        <base> 1-1000</base>
+	<not>
+	  <exceptions>3, 101,876</exceptions>
+	</not>
+      </and>
+    </range>
+  </ranges>
+  <mappings>
+    <fromScratch id="scratch">
+      <success name="all well">0</success>
+      <success name="alternativie all well">3, 5</success>
+      <failure name="file error">7</failure>
+      <failure name="generic error"/>
+      <naming name="one override">5</naming>
+    </fromScratch>
+    <withRefs id="refs">
+      <success name="the devil approves" ref="crazy"/>
+      <success ref="range"/>
+    </withRefs>
+  </mappings>
   <job>
     <id>0</id>
     <!-- this reader basically does nothing. just wastes time and 
