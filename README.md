@@ -45,11 +45,12 @@ workspace before importing).
 Now you can follow your usual workflow without needing sbt. 
 ###Eclipse without sbt
 This is absolutely untested but might provide some information for you if you,
-for some reason, do not want to install sbt. There is a `.project` and a
-`.classpath` file included in the folder `eclipse/`. Copy these files to the 
-base folder of edWood you should be a able to import the base folder as project
-right away. The problem is that you will have lots of unresolved dependencies
-that you will have to download and reset manually.
+for some reason, do not want to install sbt. There is a `project` and a
+`classpath` file included in the folder `eclipse/`. Copy these files to the 
+base folder of edWood, rename them to `.project` and `.classpath`. Now you
+should be a able to import the base folder as project right away. The problem
+is that you will have lots of unresolved dependencies that you will have to
+download and reset manually.
 
 
 __EVERYTHING BELLOW THIS POINT IS OUTDATED AND WILL BE REMOVED SOON__
