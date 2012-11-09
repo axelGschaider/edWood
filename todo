@@ -1,3 +1,5 @@
+O   redo AND and OR -> Lists
+O   implement mappings
 O   returncodes unterstützen. Abarbeitung nach folgendem Schema
           Code -> Allow List -> Error List -> Default (>0 -> Error)
 O   profiles für return codes
@@ -7,16 +9,14 @@ O   Resourcen begrenzen (MB und Sekunden). Möglichen Abbruch loggen.
 O   Vorgeführten Bug näher untersuchen (Flush, close, sleep)
 O   Logging messages umstellen: grundsätzlich kürzen und Zeit im syslog format
 O   sind named pipes als Input möglich?
+O   ein Job stirbt "for unknow reason"
 
 X   Job id im log auch vorne.
-X   ein Job stirbt "for unknow reason"
 X   besserer WorkingDirectory Support. Global (als default) und per Job (relativ zu global oder absolut)
 X   XML Sonderzeichen in Kommandos unterstützen (bzw überprüfen, ob das eh schon passt)
 X   pipes in Kommandos unterstützen
 X   newlines im logging durch tabs ersetzen
-X   Schreibfehler in "LifeReader" beheben
 X   auch errOut als Input heranziehen
 X   command interpreter überschreibbar machen
 X   configTester verbessern
-X   255 Error untersuchen -> custom adapters have not been recompiled.
 X   Fehler bei Erzeugung des Actors -> Slot wird nicht wieder frei gegeben
