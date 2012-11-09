@@ -38,8 +38,7 @@
   <job>
     <id>0</id>
     <!-- this reader basically does nothing. just wastes time and 
-         prints out the the result of 'sleep 5' . . . which is 
-         nothing ;) -->
+         prints out the result of 'sleep 5' . . . which is nothing ;) -->
     <command>sleep 5</command>
     <mapping ref="refs">
       <naming name="doing a thing">101</naming>
