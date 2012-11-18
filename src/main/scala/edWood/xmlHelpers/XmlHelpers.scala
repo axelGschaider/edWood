@@ -78,3 +78,12 @@ object Implicits {
 
 }
 
+object Utils {
+  
+  def children(xml:Node):List[Node] = (xml \ "_").toList
+
+  def attribute(xml:Node, name:String):Option[String] = 
+    (xml \ ("@"++ name)).toList.headOption.map(_.toString)
+
+}
+

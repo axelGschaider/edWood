@@ -3,6 +3,7 @@ package edWood.returnCodes
 import edWood.exceptions.ReadXmlException
 import edWood.xmlHelpers._
 import edWood.xmlHelpers.Implicits._
+import edWood.xmlHelpers.Utils._
 
 import at.axelGschaider.utils.Utils._
 import at.axelGschaider.loggsNProperties.DefaultLogs
@@ -15,7 +16,7 @@ object ReturnCodeRangeReader extends DefaultLogs {
   implicit def int2ReturnCodeRange(i:Int):ReturnCodeRange = SingleVal(i)
   implicit def node2ReturnCodeRange(xml:Node):ReturnCodeRange = handleTag(xml)
 
-  def read(xml:Elem):ReturnCodeRange = children(xml) match {
+  def read(xml:Node):ReturnCodeRange = children(xml) match {
       case Nil      => parseText( xml )
       case a :: Nil => handleTag(a)
       case _        => throw new ReadXmlException("multiple elements in base tag")
@@ -76,7 +77,6 @@ object ReturnCodeRangeReader extends DefaultLogs {
     case (a :: as)        => Or(a.trim.toInt, readSplitList(as))
   }
 
-  private def children(xml:Node):List[Node] = (xml \ "_").toList
 
 }
 

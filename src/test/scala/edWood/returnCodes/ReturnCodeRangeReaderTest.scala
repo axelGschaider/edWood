@@ -37,14 +37,6 @@ class ReturnCodeReaderTest extends FunSuite {
   test("simple list") {
     val d = <range>2,4,7</range>
     val range = ReturnCodeRangeReader read d
-    //val expected =
-    //  Or(
-    //    SingleVal(2),
-    //    Or(
-    //      SingleVal(4),
-    //      SingleVal(7)
-    //      )
-    //    )
 
     assert(!range.contains(1))
     assert(range.contains(2))
