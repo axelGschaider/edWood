@@ -12,7 +12,26 @@ import at.axelGschaider.loggsNProperties.DefaultLogs
 
 import scala.xml._
 
-//object SuccessMappingReader extends DefaultLogs {
+
+object SuccessMappingReader extends DefaultLogs {
+
+  type RangeReference = Map[String, ReturnCodeRange]
+  type RangeTuple = (List[ReturnCodeRange], List[ReturnCodeRange])
+  val emptyRanges:RangeTuple = (Nil, Nil)
+
+
+  def read(xml:Node, refs:RangeReference = Map()):SuccessMapping = 
+    children(xml).foldLeft(emptyRanges)(reduceToTupple(refs)) match {
+      case (Nil, Nil) => DefaultSuccess
+      case (suc, Nil) => JustSuccesses(suc)
+      case (Nil, err) => JustErrors(err)
+      case (suc, err) => FullMapping(suc, err)
+    }
+  
+
+  private def reduceToTupple(ref:RangeReference) = (tuple:RangeTuple,xml:Node) => tuple
+
+}
 //  def read(xml:Node, refs:Map[String, ReturnCodeRange]):Map[String, SuccessMapping] = {
 //    val elems = for {
 //      node  <- children(xml)
