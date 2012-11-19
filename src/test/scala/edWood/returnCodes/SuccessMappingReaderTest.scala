@@ -1,5 +1,7 @@
 package edWood.returnCodes
 
+import edWood.exceptions.ReadXmlException
+
 import org.scalatest.junit.JUnitSuite
 import org.scalatest.prop.Checkers
 import org.junit.runner.RunWith
@@ -61,6 +63,34 @@ class SuccessMappingReaderTest extends FunSuite {
     assert(m success 2)
     assert(m success 4)
     assert(!m.success(5))
+  }
+
+  test("unknow tag") {
+    val x = 
+      <a>
+        <failure>2</failure>
+        <success>3</success>
+        <naming>4</naming>
+        <error>5</error>
+      </a>
+
+    val thrown = intercept[ReadXmlException] {
+      val m = SuccessMappingReader.read(x)
+    }
+    assert(thrown.getMessage == "unknown tag <error> in mapping definition")
+  }
+
+  test("unresolvable reference") {
+    val x = 
+      <a>
+        <success ref="base">5</success>
+      </a>
+    val map = Map("noBaseHere" -> Range(2,4))
+
+    val thrown = intercept[ReadXmlException] {
+      val m = SuccessMappingReader.read(x, map)
+    }
+    assert(thrown.getMessage == "could not resolve ranges reference 'base'")
   }
 
 }
