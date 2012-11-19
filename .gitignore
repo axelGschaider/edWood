@@ -12,3 +12,4 @@ tags
 output.txt
 specialCharTest.txt
 runDirectory/
+*.swo
