@@ -1,11 +1,9 @@
 package edWood.returnCodes
 
-
-
 import edWood.exceptions.ReadXmlException
 import edWood.xmlHelpers._
 import edWood.xmlHelpers.Implicits._
-import edWood.xmlHelpers.Utils._
+import edWood.xmlHelpers.Utils.{children, attribute}
 
 import at.axelGschaider.utils.Utils._
 import at.axelGschaider.loggsNProperties.DefaultLogs

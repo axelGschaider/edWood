@@ -1,8 +1,20 @@
 package edWood.returnCodes
 
+
 sealed trait ReturnCodeRange {
   def contains(i:Int):Boolean
+  def ?(i:Int) = contains(i)
 }
+
+object RangeImplicits {
+
+  implicit def listOfRanges2ToRangeList(list:List[ReturnCodeRange]):RangeList = RangeList(list)
+}
+
+case class RangeList(list:List[ReturnCodeRange]) extends ReturnCodeRange {
+  def contains(i:Int) = list.exists(_ contains i)
+}
+
 
 case class SingleVal(x:Int) extends ReturnCodeRange {
   def contains(i:Int) = x == i

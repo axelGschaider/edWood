@@ -9,12 +9,15 @@ import org.scalatest.FunSuite
 import org.scalacheck.Arbitrary._
 import org.scalacheck.Prop._
 
+import edWood.returnCodes.RangeImplicits._
+
 @RunWith(classOf[JUnitRunner])
 class FixedReturnCodesTests extends FunSuite {
 
   
   val singleVal = SingleVal(13)
   val range = Range(4,6)
+
 
   test("SingleVal") {
     assert(singleVal contains 13)
@@ -90,6 +93,14 @@ class FixedReturnCodesTests extends FunSuite {
     assert(AlwaysSuccess contains 3)
     assert(AlwaysSuccess contains 101010101)
     assert(AlwaysSuccess contains -1)
+  }
+
+  test("implicit RangeList") {
+    val list = List(singleVal, range)
+    assert(list ? 4)
+    assert(list ? 6)
+    assert(list ? 13)
+    assert(!list.?(12))
   }
 
 }
