@@ -11,7 +11,7 @@ case object DefaultSuccess extends SuccessMapping {
   def success(code:Int) = code == 0
 }
 
-trait SuccessMappingImpl {
+trait SuccessMappingImpl extends SuccessMapping {
   val successes:List[ReturnCodeRange]
   val errors:List[ReturnCodeRange]
 
