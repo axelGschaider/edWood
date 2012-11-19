@@ -11,13 +11,13 @@ The rest of this chapter adresses unexpereinced SBT users:
 In a terminal go to the base directory of edWood and run `sbt`. This starts an
 interactive shell that allowes you to run some commands:
 
-    `compile` resolves all dependencies and compiles the programm
+`compile` resolves all dependencies and compiles the programm
 
-    `test`    resolves all dependencies and runnes all tests
+`test`    resolves all dependencies and runnes all tests
 
-    `run` *configFile* runnes edWood with the given config file
+`run` *configFile* runnes edWood with the given config file
 
-    `clean`   cleanes the workspace
+`clean`   cleanes the workspace
 
 If this is the your first run of sbt it will start downloading some 
 dependencies right away.
