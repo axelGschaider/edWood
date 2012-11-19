@@ -21,7 +21,7 @@ object SuccessMappingReader extends DefaultLogs {
 
 
   def read(xml:Node, refs:RangeReference = Map()):SuccessMapping = 
-    children(xml).foldLeft(emptyRanges)(reduceToTupple(refs)) match {
+    children(xml).foldLeft(emptyRanges)( reduceToTupple(refs) ) match {
       case (Nil, Nil) => DefaultSuccess
       case (suc, Nil) => JustSuccesses(suc)
       case (Nil, err) => JustErrors(err)
@@ -29,7 +29,17 @@ object SuccessMappingReader extends DefaultLogs {
     }
   
 
-  private def reduceToTupple(ref:RangeReference) = (tuple:RangeTuple,xml:Node) => tuple
+  private def reduceToTupple(refs:RangeReference) = (tuple:RangeTuple,xml:Node) =>
+    xml.label match {
+      case "naming"  => tuple
+      case "success" => ( resolveToRange(xml,refs) :: tuple._1
+                        , tuple._2   )
+      case "failure" => ( tuple._1
+                        , resolveToRange(xml, refs) :: tuple._2 )
+      case someName  => throw new ReadXmlException("unknown tag <" + someName + "> in mapping definition")
+    }
+
+  def resolveToRange(xml:Node, ref:RangeReference):ReturnCodeRange = ???
 
 }
 //  def read(xml:Node, refs:Map[String, ReturnCodeRange]):Map[String, SuccessMapping] = {
