@@ -17,18 +17,17 @@ object RangeDictionaryReader extends DefaultLogs {
   def read(xml:Elem):Map[String, ReturnCodeRange] = {
     val elements = for {
       child <- children(xml)
-      elem  = toDictionaryTuple(child)
-      name  <- elem._1
+      name  <- attribute(child, "id")
+      range = ReturnCodeRangeReader read child
+      //elem  = toDictionaryTuple(child)
+      //name  <- elem._1
     } yield {
       debug("found range '" + name + "'")
-      (name, elem._2)
+      (name, range)
     }
 
     Map() ++ elements
   }
-
-  private def toDictionaryTuple(xml:Node):(Option[String], ReturnCodeRange) = 
-    (attribute(xml, "id"), ReturnCodeRangeReader read xml)
 
 }
 
