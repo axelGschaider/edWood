@@ -25,13 +25,13 @@
   <mappings>
     <fromScratch id="scratch">
       <success label="all well">0</success>
-      <naming name="one override">5</naming>
-      <success name="alternativie all well">3, 5</success>
-      <failure name="file error">7</failure>
-      <failure name="generic error"/>
+      <naming label="one override">5</naming>
+      <success label="alternativie all well">3, 5</success>
+      <failure label="file error">7</failure>
+      <failure label="generic error"/>
     </fromScratch>
     <withRefs id="refs">
-      <success name="the devil approves" ref="crazy"/>
+      <success label="the devil approves" ref="crazy"/>
       <success ref="range"/>
     </withRefs>
   </mappings>
@@ -41,8 +41,8 @@
          prints out the result of 'sleep 5' . . . which is nothing ;) -->
     <command>sleep 5</command>
     <mapping ref="refs">
-      <naming name="doing a thing">101</naming>
-      <failure name="the same thing!">101</failure>
+      <naming label="doing a thing">101</naming>
+      <failure label="the same thing!">101</failure>
     </mapping>
     <reader>
       <!-- loads the DummyReader2 and tests it during the startup
