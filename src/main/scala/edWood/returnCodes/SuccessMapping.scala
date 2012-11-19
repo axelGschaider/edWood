@@ -11,15 +11,24 @@ case object DefaultSuccess extends SuccessMapping {
   def success(code:Int) = code == 0
 }
 
-case class FullMapping(successes:List[ReturnCodeRange], errors:List[ReturnCodeRange]) extends SuccessMapping {
+trait SuccessMappingImpl {
+  val successes:List[ReturnCodeRange]
+  val errors:List[ReturnCodeRange]
+
   def success(code:Int) = 
     if(errors ? code) false
     else if (successes ? code) true
     else DefaultSuccess success code
 }
 
-case class JustSuccesses(override val successes:List[ReturnCodeRange]) extends FullMapping(successes, Nil)
+case class FullMapping(successes:List[ReturnCodeRange], errors:List[ReturnCodeRange]) extends SuccessMappingImpl
 
-case class JustErrors(override val errors:List[ReturnCodeRange]) extends FullMapping(Nil, errors)
+case class JustSuccesses(override val successes:List[ReturnCodeRange]) extends SuccessMappingImpl {
+  override val errors = Nil
+}
+
+case class JustErrors(override val errors:List[ReturnCodeRange]) extends SuccessMappingImpl {
+  override val successes = Nil
+}
 
 
