@@ -19,8 +19,11 @@ import scala.xml.{Node => XNode}
 object SuccessMappingReader extends DefaultLogs {
 
   type RangeReference = Map[String, ReturnCodeRange]
+
   type RangeTuple = (List[ReturnCodeRange], List[ReturnCodeRange])
   private val emptyRanges:RangeTuple = (Nil, Nil)
+  def success = Lens[RangeTuple, List[ReturnCodeRange]](_._1, (tuple, suc) => (suc, tuple._2))
+  def failure = Lens[RangeTuple, List[ReturnCodeRange]](_._2, (tuple, fail) => (tuple._1, fail))
 
 
   def read(xml:XNode, refs:RangeReference = Map()):SuccessMapping = 
@@ -43,12 +46,8 @@ object SuccessMappingReader extends DefaultLogs {
   private def reduceToTupple(resolve:(XNode => ReturnCodeRange)) = (tuple:RangeTuple,xml:XNode) =>
     xml.label match {
       case "naming"  => tuple
-      case "success" => ( resolve(xml) :: tuple._1
-                        , tuple._2
-                        )
-      case "failure" => ( tuple._1
-                        , resolve(xml) :: tuple._2 
-                        )
+      case "success" => success.mod( tuple, (resolve(xml) :: _) )
+      case "failure" => failure.mod( tuple, (resolve(xml) :: _) )
       case someName  => throw new ReadXmlException("unknown tag <" + someName + "> in mapping definition")
     }
 
